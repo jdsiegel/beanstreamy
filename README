@@ -1,0 +1,16 @@
+Beanstreamy
+===========
+
+A simple utility library for the Beanstream payment gateway. Currently includes a helper method for using beanstream's hosted payment page.
+
+Example
+=======
+
+After setting your merchant id and hash key in the initializer file, you can create a form to submit to the hosted payment page using:
+
+<% beanstream_hosted_payment_form :order_id => 5, :amount => 34.45 do -%>
+  <!-- any other beanstream fields you'd like to submit, e.g. ordName. -->
+  <%= submit_tag "Checkout with Beanstream" %>
+<% end -%>
+
+Copyright (c) 2010 Jeff Siegel, released under the MIT license

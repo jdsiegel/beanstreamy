@@ -1,0 +1,19 @@
+=============================================================================
+
+There are two settings you need to specify in the 
+config/initializers/beanstreamy.rb file:
+
+  1. Your Beanstream merchant id.
+
+  2. Your hash key for hash validation. You can turn on hash validation and 
+     set your hash key on the "order settings" page in your Beanstream account.
+
+After these are set, you'll be able to generate a form for the hosted payment 
+page in your views with:
+
+<% beanstream_hosted_payment_form :order_id => 5, :amount => 34.45 do -%>
+  <!-- any other beanstream fields you'd like to submit, e.g. ordName. -->
+  <%= submit_tag "Checkout with Beanstream" %>
+<% end -%>
+
+=============================================================================
