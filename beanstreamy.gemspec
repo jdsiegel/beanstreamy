@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{beanstreamy}
-  s.version = "0.1.0"
+  s.version = "0.2.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Jeff Siegel"]
@@ -27,7 +27,9 @@ Gem::Specification.new do |s|
      "generators/beanstreamy/templates/beanstreamy.rb",
      "init.rb",
      "lib/beanstreamy.rb",
+     "lib/beanstreamy/gateway.rb",
      "lib/beanstreamy/hosted_payment_helper.rb",
+     "lib/beanstreamy/util.rb",
      "lib/tasks/beanstreamy.rake",
      "test/beanstreamy_test.rb",
      "test/test_helper.rb"
