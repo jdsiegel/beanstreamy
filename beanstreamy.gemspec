@@ -5,12 +5,12 @@
 
 Gem::Specification.new do |s|
   s.name = %q{beanstreamy}
-  s.version = "0.2.0"
+  s.version = "0.2.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Jeff Siegel"]
   s.date = %q{2010-07-09}
-  s.description = %q{Currently provides a helper method for rendering forms that will submit to the beanstream hosted payment gateway}
+  s.description = %q{Adds activemerchant gateway support for hash validation, querying transactions, and submitting payment via hosted forms}
   s.email = %q{jeff@stage2.ca}
   s.extra_rdoc_files = [
     "README"
@@ -38,7 +38,7 @@ Gem::Specification.new do |s|
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.6}
-  s.summary = %q{A Beanstream utility library for Rails}
+  s.summary = %q{A Beanstream utility library for Rails and ActiveMerchant}
   s.test_files = [
     "test/beanstreamy_test.rb",
      "test/test_helper.rb"
