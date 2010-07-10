@@ -26,8 +26,8 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gemspec|
     gemspec.name = "beanstreamy"
-    gemspec.summary = "A Beanstream utility library for Rails"
-    gemspec.description = "Currently provides a helper method for rendering forms that will submit to the beanstream hosted payment gateway"
+    gemspec.summary = "A Beanstream utility library for Rails and ActiveMerchant"
+    gemspec.description = "Adds activemerchant gateway support for hash validation, querying transactions, and submitting payment via hosted forms"
     gemspec.email = "jeff@stage2.ca"
     gemspec.homepage = "http://github.com/jdsiegel/beanstreamy"
     gemspec.authors = ["Jeff Siegel"]
