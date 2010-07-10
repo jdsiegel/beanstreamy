@@ -12,34 +12,42 @@ module Beanstreamy
       hash_key = options.delete(:hash_key) || config.hash_key
       approved_url = options.delete(:approved_url) || config.approved_url
       declined_url = options.delete(:declined_url) || config.declined_url
+      error_url = options.delete(:error_url)
+
+      skip_hash = options.delete(:skip_hash)
+      extra_params = options.delete(:params)
+
+      hashed_params = [["merchant_id", merchant_id],
+                       ["trnOrderNumber", order_id],
+                       ["trnAmount", amount]]
+      hashed_params << ["approvedPage", approved_url] if approved_url.present?
+      hashed_params << ["declinedPage", declined_url] if declined_url.present?
+      hashed_params << ["errorPage", error_url] if error_url.present?
+
+      if expire_at = options.delete(:expire_at)
+        hashed_params << ["hashExpiry", Util.hash_expiry(expire_at)]
+      end
+
+      hashed_params += Array(extra_params)
 
       form = content_tag(:form, options.merge(:action => config.payment_url, :method => "post")) do
-        concat hidden_field_tag("merchant_id", merchant_id)
-        concat hidden_field_tag("trnOrderNumber", order_id)
-        concat hidden_field_tag("trnAmount", amount)
-        if approved_url.present?
-          concat hidden_field_tag("approvedPage", approved_url)
-        end
-        if declined_url.present?
-          concat hidden_field_tag("declinedPage", declined_url)
+        hashed_params.each do |key, value|
+          concat hidden_field_tag(key, value)
         end
 
-        # Beansream's hosted page uses hash validation to prevent price modification. This hash is computed from
-        # the url encoded string of the above inputs
-        query_params = [
-          ["merchant_id", merchant_id],
-          ["trnOrderNumber", order_id],
-          ["trnAmount", amount],
-          ["approvedPage", approved_url],
-          ["declinedPage", declined_url]
-        ]
-        query_string = query_params.reject { |k,v| v.blank? }.map { |k,v| v.to_query(k) }.join('&')
-        hash_value = Digest::SHA1.hexdigest(query_string + hash_key)
+        hash_value = nil
+        if hash_key.present? && !skip_hash
+          # Beansream's hosted page uses hash validation to prevent price modification. This hash is computed from
+          # the url encoded string of the above inputs
+          query_string = hashed_params.reject { |k,v| v.blank? }.map { |k,v| v.to_query(k) }.join('&')
+          hash_value = Util.hash_value(hash_key, query_string)
 
-        concat hidden_field_tag("hashValue", hash_value)
+          concat hidden_field_tag("hashValue", hash_value)
+        end
 
         block.call(:hash_value => hash_value, :query_string => query_string)
       end
+
       concat form
     end
   end

@@ -9,26 +9,50 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Jeff Siegel"]
-  s.date = %q{2010-06-16}
+  s.date = %q{2010-07-09}
   s.description = %q{Currently provides a helper method for rendering forms that will submit to the beanstream hosted payment gateway}
   s.email = %q{jeff@stage2.ca}
   s.extra_rdoc_files = [
     "README"
+  ]
+  s.files = [
+    ".gitignore",
+     "MIT-LICENSE",
+     "README",
+     "Rakefile",
+     "VERSION",
+     "beanstreamy.gemspec",
+     "generators/beanstreamy/beanstreamy_generator.rb",
+     "generators/beanstreamy/templates/README",
+     "generators/beanstreamy/templates/beanstreamy.rb",
+     "init.rb",
+     "lib/beanstreamy.rb",
+     "lib/beanstreamy/hosted_payment_helper.rb",
+     "lib/tasks/beanstreamy.rake",
+     "test/beanstreamy_test.rb",
+     "test/test_helper.rb"
   ]
   s.homepage = %q{http://github.com/jdsiegel/beanstreamy}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.6}
   s.summary = %q{A Beanstream utility library for Rails}
+  s.test_files = [
+    "test/beanstreamy_test.rb",
+     "test/test_helper.rb"
+  ]
 
   if s.respond_to? :specification_version then
     current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
     s.specification_version = 3
 
     if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
+      s.add_runtime_dependency(%q<activemerchant>, [">= 1.5.1"])
     else
+      s.add_dependency(%q<activemerchant>, [">= 1.5.1"])
     end
   else
+    s.add_dependency(%q<activemerchant>, [">= 1.5.1"])
   end
 end
 

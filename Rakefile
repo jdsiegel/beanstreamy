@@ -31,6 +31,7 @@ begin
     gemspec.email = "jeff@stage2.ca"
     gemspec.homepage = "http://github.com/jdsiegel/beanstreamy"
     gemspec.authors = ["Jeff Siegel"]
+    gemspec.add_dependency('activemerchant', '>= 1.5.1')
   end
 rescue LoadError
   puts "Jeweler not available. Install it with: gem install jeweler"

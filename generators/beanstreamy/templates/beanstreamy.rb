@@ -17,3 +17,6 @@ Beanstreamy.config.hash_key    = ""
 
 # If you use your own declined page, you can set that here:
 # Beanstreamy.config.declined_url = "/some/path"
+
+# If you use your own error page, you can set that here:
+# Beanstreamy.config.error_url = "/some/path"
