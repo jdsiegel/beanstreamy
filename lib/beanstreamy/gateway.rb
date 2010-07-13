@@ -29,6 +29,18 @@ module Beanstreamy
 
     private
 
+    def parse(body)
+      results = super
+
+      if results[:errorMessage]
+        results[:errorMessage].gsub!(/<LI>/, "")
+        results[:errorMessage].gsub!(/(\.)?<br>/, ". ")
+        results[:errorMessage].strip!
+      end
+
+      results
+    end
+
     def add_transaction_type(post, action)
       post[:trnType] = EXTRA_TRANSACTIONS[action] || super
     end
