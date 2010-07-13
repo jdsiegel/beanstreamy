@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{beanstreamy}
-  s.version = "0.2.1"
+  s.version = "0.2.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Jeff Siegel"]
-  s.date = %q{2010-07-09}
+  s.date = %q{2010-07-12}
   s.description = %q{Adds activemerchant gateway support for hash validation, querying transactions, and submitting payment via hosted forms}
   s.email = %q{jeff@stage2.ca}
   s.extra_rdoc_files = [
